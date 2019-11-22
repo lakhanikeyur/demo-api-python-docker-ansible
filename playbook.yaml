@@ -1,0 +1,26 @@
+- name: Network Getting Started First Playbook Extended
+  gather_facts: false
+  become: true
+  hosts: all
+  tasks:
+    - name: Installing Python
+      apt: name=python state=present
+
+    - name: Installing pip
+      apt: name=python-pip state=present
+
+    - name: Installing docker-py
+      pip: name=docker-py
+
+    - name: pulling an image from a docker hub 
+      docker_image:
+        name: lakh0009/demo-api
+        source: pull
+
+    - name: Starting a container
+      docker_container:
+        name: demo-api
+        image: lakh0009/demo-api
+        state: started 
+        ports:
+          - 80:8080

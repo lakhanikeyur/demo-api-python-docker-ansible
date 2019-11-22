@@ -1,0 +1,2 @@
+[nodes]
+dockervm ansible_user=lakh0009 ansible_host=52.187.255.36
